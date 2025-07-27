@@ -36,12 +36,6 @@ This project is an advanced AI Voice Assistant that integrates Text-to-Speech (T
 
 - Google API credentials (for Calendar, Contacts, and Gmail access)
 
-- Tavily API key (for web search)
-
-- Groq API key (for Llama3)
-
-- Google Gemini API key (for using the Gemini model)
-
 - Deepgram API key (for voice processing)
 
 - Necessary Python libraries (listed in `requirements.txt`)
@@ -72,17 +66,6 @@ pip install -r requirements.txt
 
 Create a `.env` file in the root directory of the project and add your API keys:
 
-```env
-GOOGLE_API_KEY=your_google_api_key
-DEEPGRAM_API_KEY=your_deepgram_api_key
-TAVILY_API_KEY=your_tavily_api_key
-GEMINI_API_KEY=your_gemini_api_key
-GROQ_API_KEY=your_groq_api_key
-```
-
-5. **Configure Google API credentials:**
-
-Follow Google's documentation to set up credentials for Calendar, Contacts, and Gmail APIs. Save the credentials file in a secure location and update the path in the configuration file.
 
 ### Running the Application
 
@@ -103,10 +86,4 @@ The assistant is programmed to stop the conversation when the user says "goodbye
 - "Search the web for recent news about artificial intelligence."
 - "What was the recipe I saved last week for chocolate chip cookies?"
 
-## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request for any changes.
-
-## Contact
-
-If you have any questions or suggestions, feel free to contact me at `aymenMir1001@gmail.com`.

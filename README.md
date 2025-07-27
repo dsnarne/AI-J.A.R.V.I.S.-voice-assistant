@@ -1,89 +1,173 @@
-# AI Voice Assistant: Your Intelligent Conversational Companion
+# AI Voice Assistant: D.E.E.R (Digital Enhanced Electronic Responder)
 
-**Transform your digital interactions with your own AI Voice Assistant🎙️🤖**
+**Your personal JARVIS-like voice assistant for natural conversations 🎙️🤖**
 
-This project is an advanced AI Voice Assistant that integrates Text-to-Speech (TTS) and Speech-to-Text (STT) capabilities, allowing users to communicate directly with the agent and receive vocal responses. The assistant can utilize various tools to fulfill user requests, including managing calendars, contacts, emails, and performing web searches.
+A streamlined, terminal-based AI voice assistant that lets you have natural conversations with AI. Speak to it, and it responds with your own cloned voice using advanced AI technology.
 
 ## Features
 
-- **Speech-to-Text (STT)**: Convert spoken language into written text.
+- **🎤 Speech-to-Text**: Uses OpenAI Whisper for accurate speech recognition
+- **🤖 AI Intelligence**: Powered by OpenAI GPT-4o for intelligent responses
+- **🔊 Text-to-Speech**: ElevenLabs TTS with your cloned voice for natural responses
+- **⌨️ Simple Controls**: Press Enter to start/stop recording, Ctrl+C to exit
+- **🎯 Voice Cloning**: Uses your own voice ID for personalized responses
+- **⚡ Real-time**: Instant voice interaction without web interfaces
 
-- **Text-to-Speech (TTS)**: Generate vocal responses from text input.
-
-- **Vocal Interaction**: Engage in natural conversations with the AI assistant.
-
-- **Tool Integration**: Utilize built-in tools for calendar management, contact handling, email composition, web searching, and personal knowledge base access.
-
-### Available Tools
-
-- **CalendarTool**: Book events on Google Calendar with event name, date/time, and optional description.
-
-- **AddContactTool**: Add new contacts to Google Contacts with name, phone number, and optional email address.
-
-- **FetchContactTool**: Retrieve contact information from Google Contacts by searching with the contact's name.
-
-- **EmailingTool**: Send emails via Gmail by providing recipient name, subject, and body content.
-
-- **SearchWebTool**: Perform web searches to gather up-to-date information.
-
-- **KnowledgeBaseTool**: Access the user's personal notes and saved information from your custom knowledge base (all the documents included in the `/files` folder)
-
-## How to Run
+## Quick Start
 
 ### Prerequisites
 
 - Python 3.9+
-
-- Google API credentials (for Calendar, Contacts, and Gmail access)
-
-- Deepgram API key (for voice processing)
-
-- Necessary Python libraries (listed in `requirements.txt`)
+- OpenAI API key
+- ElevenLabs API key and voice ID
+- macOS/Linux/Windows
 
 ### Setup
 
 1. **Clone the repository:**
-
-```sh
+```bash
 git clone https://github.com/yourusername/AI-Voice-assistant.git
 cd AI-Voice-assistant
 ```
 
-2. **Create and activate a virtual environment:**
-
-```sh
-python -m venv venv
-source venv/bin/activate # On Windows use `venv\Scripts\activate`
+2. **Create and activate virtual environment:**
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ```
 
-3. **Install the required packages:**
-
-```sh
+3. **Install dependencies:**
+```bash
 pip install -r requirements.txt
 ```
 
 4. **Set up environment variables:**
-
-Create a `.env` file in the root directory of the project and add your API keys:
-
-
-### Running the Application
-
-1. **Start a conversation with the assistant:**
-
-```sh
-python main.py
+Create a `.env` file in the project root:
+```bash
+OPENAI_API_KEY=your_openai_api_key_here
+ELEVENLABS_API_KEY=your_elevenlabs_api_key_here
+ELEVENLABS_VOICE_ID=your_cloned_voice_id_here
 ```
 
-The assistant is programmed to stop the conversation when the user says "goodbye".
+### Running the Assistant
 
-## Usage Examples
+```bash
+python ai_voice_assistant.py
+```
 
-- "Schedule a meeting with John for tomorrow at 2 PM."
-- "Add a new contact: Jane Doe, phone number 555-1234."
-- "What's Mary's email address?"
-- "Send an email to Bob with the subject 'Project Update'."
-- "Search the web for recent news about artificial intelligence."
-- "What was the recipe I saved last week for chocolate chip cookies?"
+## Usage
+
+1. **Start the assistant** - Run the script
+2. **Press Enter** - Start recording your voice
+3. **Speak naturally** - Ask questions, have conversations
+4. **Press Enter again** - Stop recording and get AI response
+5. **Listen** - AI responds with your cloned voice
+6. **Repeat** - Continue the conversation
+7. **Exit** - Press Ctrl+C to quit
+
+## Configuration
+
+All settings are centralized in `config.py`:
+
+- **OpenAI Model**: `gpt-4o` (latest GPT-4)
+- **Response Length**: 200 tokens max
+- **Creativity**: Temperature 0.7 (balanced)
+- **Audio Quality**: 16kHz, mono
+- **Whisper Model**: Base model for transcription
+
+## Project Structure
+
+```
+AI-Voice-assistant/
+├── ai_voice_assistant.py    # Main application
+├── config.py                # Configuration settings
+├── requirements.txt         # Python dependencies
+├── .env                    # API keys (not in repo)
+├── README.md              # This file
+└── .gitignore             # Git ignore rules
+```
+
+## API Setup
+
+### OpenAI
+1. Get API key from [OpenAI Platform](https://platform.openai.com/api-keys)
+2. Add to `.env` as `OPENAI_API_KEY`
+
+### ElevenLabs
+1. Get API key from [ElevenLabs](https://elevenlabs.io/)
+2. Create or clone a voice and get the voice ID
+3. Add to `.env` as `ELEVENLABS_API_KEY` and `ELEVENLABS_VOICE_ID`
+
+## Troubleshooting
+
+### Common Issues
+
+**"No module named 'whisper'"**
+```bash
+pip install openai-whisper
+```
+
+**"ffmpeg not found"**
+```bash
+# macOS
+brew install ffmpeg
+
+# Ubuntu/Debian
+sudo apt install ffmpeg
+
+# Windows
+# Download from https://ffmpeg.org/download.html
+```
+
+**"PortAudio not found"**
+```bash
+# macOS
+brew install portaudio
+
+# Ubuntu/Debian
+sudo apt install portaudio19-dev
+```
+
+**SSL Certificate Issues (macOS)**
+```bash
+/Applications/Python\ 3.*/Install\ Certificates.command
+```
+
+### Audio Issues
+- Ensure microphone permissions are granted
+- Check system audio settings
+- Try different audio devices if available
+
+## Dependencies
+
+- **openai**: GPT-4o API access
+- **elevenlabs**: Text-to-speech with voice cloning
+- **openai-whisper**: Speech-to-text transcription
+- **sounddevice**: Audio recording
+- **pygame**: Audio playback
+- **scipy/numpy**: Audio processing
+- **python-dotenv**: Environment variable management
+
+## Security Notes
+
+- `.env` file is excluded from version control
+- API keys are never committed to the repository
+- Use environment variables for all sensitive data
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is open source and available under the MIT License.
+
+---
+
+**Enjoy your personal AI voice assistant! 🎤🤖**
 
 

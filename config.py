@@ -6,34 +6,33 @@ Centralized settings and API configuration
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
 
 class Config:
     """Centralized configuration for the AI Voice Assistant"""
     
-    # API Keys
+    #API Keys
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
     ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
     ELEVENLABS_VOICE_ID = os.getenv("ELEVENLABS_VOICE_ID")
     
-    # OpenAI Configuration
+    #OpenAI Configuration
     OPENAI_MODEL = "gpt-4o"
     OPENAI_MAX_TOKENS = 200
     OPENAI_TEMPERATURE = 0.7
     
-    # ElevenLabs Configuration
+    #ElevenLabs Configuration
     ELEVENLABS_MODEL = "eleven_monolingual_v1"
     
-    # Audio Recording Configuration
+    #Audio Recording Configuration
     SAMPLE_RATE = 16000
     CHANNELS = 1
     CHUNK_SIZE = 1024
     
-    # Whisper Configuration
+    #Whisper Configuration
     WHISPER_MODEL = "base"
     
-    # Validation
+   
     @classmethod
     def validate(cls):
         """Validate that all required environment variables are set"""
